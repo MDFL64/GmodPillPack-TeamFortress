@@ -1,4 +1,4 @@
-GmodPillPack
+GmodPillPack-TeamFortress
 ============
 
 This is the Team Fortress Pill Pack addon. It allows you to change into creatures and machines from Team Fortress 2.
