@@ -1,11 +1,5 @@
 AddCSLuaFile()
 
-if CLIENT then
-	PrecacheParticleSystem("eyeboss_projectile")
-	PrecacheParticleSystem("critical_rocket_red")
-	PrecacheParticleSystem("critical_rocket_blue")
-end
-
 pk_pills.register("tf_hhh",{
 	printName="HHH",
 	type="ply",

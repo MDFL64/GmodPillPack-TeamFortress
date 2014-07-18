@@ -26,8 +26,17 @@ if CLIENT then
 	game.AddParticles("particles/explosion.pcf")
 	game.AddParticles("particles/bigboom.pcf")
 	game.AddParticles("particles/dirty_explodepcf")
+
+	PrecacheParticleSystem("fireSmokeExplosion")
+	PrecacheParticleSystem("cinefx_goldrush")
+	PrecacheParticleSystem("ExplosionCore_MidAir")
+
 	game.AddParticles("particles/eyeboss.pcf")
+	PrecacheParticleSystem("eyeboss_projectile")
+	
 	game.AddParticles("particles/rockettrail.pcf")
+	PrecacheParticleSystem("critical_rocket_red")
+	PrecacheParticleSystem("critical_rocket_blue")
 end
 
 pk_pills.packStart("Team Fortress 2","tf2","games/16/tf.png")

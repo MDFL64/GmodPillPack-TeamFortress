@@ -1,10 +1,5 @@
 AddCSLuaFile()
 
-if CLIENT then
-	PrecacheParticleSystem("fireSmokeExplosion")
-	PrecacheParticleSystem("cinefx_goldrush")
-end
-
 pk_pills.register("tf_sentrybuster",{
 	printName="Sentry Buster",
 	type="ply",

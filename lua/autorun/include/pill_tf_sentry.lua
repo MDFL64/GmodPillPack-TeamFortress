@@ -1,9 +1,5 @@
 AddCSLuaFile()
 
-if CLIENT then
-	PrecacheParticleSystem("ExplosionCore_MidAir")
-end
-
 local function sentry_transform(ent,type)
 	local ply = ent:GetPillUser()
 
