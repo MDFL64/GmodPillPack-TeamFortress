@@ -22,7 +22,9 @@ end
 
 AddCSLuaFile()
 
-if CLIENT then
+if SERVER then
+	resource.AddWorkshop("258248317")
+else
 	game.AddParticles("particles/explosion.pcf")
 	game.AddParticles("particles/bigboom.pcf")
 	game.AddParticles("particles/dirty_explodepcf")
@@ -50,20 +52,3 @@ include("include/pill_tf_cutouts.lua")
 include("include/pill_tf_classes.lua")
 
 include("include/pill_tf_fun.lua")
-
-pk_pills.packFinalize()
-
-/*
-pk_pills.addFiles{
-	"models/birdbrainswagtrain/zombie/zombine_frame.mdl",
-	"models/birdbrainswagtrain/episodic/floor_turret.mdl",
-	"models/birdbrainswagtrain/episodic/roller.mdl",
-	"models/birdbrainswagtrain/episodic/roller_spikes.mdl"
-}
-
-pk_pills.addIcons{
-	"pill_wep_magnade",
-	"pill_wep_csniper"
-}
-*/
-pk_pills.addWorkshop("258248317")
