@@ -149,6 +149,10 @@ function SWEP:Reload()
 	end*/
 end
 
+function SWEP:MoMoMoveSpeedMod()
+	if self.windupstart then return .478 end
+end
+
 function SWEP:OnRemove()
 	if CLIENT then return end
 	self.sound_shoot:Stop()
