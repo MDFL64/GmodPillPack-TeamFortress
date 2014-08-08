@@ -51,7 +51,6 @@ end
 
 if SERVER then
 	function SWEP:Think()
-
 			/*if self.lastShot+.11>=CurTime() then
 				if !self.sound_shoot:IsPlaying() then
 					self.sound_shoot:Play()
@@ -117,6 +116,20 @@ if SERVER then
 		self.primaryAttackCalled = false
 		self.secondaryAttackCalled = false
 	end
+else
+	function SWEP:Think()
+		if self.primaryAttackCalled or self.secondaryAttackCalled then
+			if !self.windupstart then
+				self.windupstart=CurTime()
+			end
+		else
+			if self.windupstart then
+				self.windupstart=nil
+			end
+		end
+		self.primaryAttackCalled = false
+		self.secondaryAttackCalled = false
+	end
 end
 
 //function SWEP:Remove()
@@ -134,4 +147,16 @@ function SWEP:Reload()
 		self.ReloadingTime = CurTime() + 1.3
 		self:SetNextPrimaryFire(CurTime() + 1.3)
 	end*/
+end
+
+function SWEP:OnRemove()
+	if CLIENT then return end
+	self.sound_shoot:Stop()
+	self.sound_spin:Stop()
+	self.sound_windup:Stop()
+	self.sound_winddown:Stop()
+end
+
+function SWEP:Holster()
+	return !self.windupstart
 end

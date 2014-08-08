@@ -40,6 +40,7 @@ function SWEP:PrimaryAttack()
 	rocket:SetAngles(self.Owner:EyeAngles())
 	//rocket.noPhys=true
 	//rocket.shooter=ent
+	rocket.speed=1100
 	rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
 	//if ent:GetSkin()==2 then
 	rocket.particle="rockettrail"

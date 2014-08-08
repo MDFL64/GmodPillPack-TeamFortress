@@ -40,6 +40,7 @@ function SWEP:PrimaryAttack()
 	nade:SetAngles(self.Owner:EyeAngles())
 	nade.fuse=2.3
 	nade.tf2=true
+	nade.speed=1220
 	nade:Spawn()
 	nade:SetOwner(self.Owner)
 

@@ -211,7 +211,8 @@ pk_pills.register("tf_eye",{
 			rocket:SetModel("models/props_halloween/eyeball_projectile.mdl")
 			rocket:SetPos(ent:GetPos())
 			rocket:SetAngles(ply:EyeAngles())
-			//rocket.noPhys=true
+			rocket.speed=330
+			rocket.dmgmod=3
 			//rocket.shooter=ent
 			rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
 			if ent:GetSkin()==2 then

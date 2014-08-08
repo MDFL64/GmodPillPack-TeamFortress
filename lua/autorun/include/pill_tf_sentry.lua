@@ -226,6 +226,8 @@ pk_pills.register("tf_sentry_3",{
 			rocket:SetAngles(a.Ang)
 			rocket.noPhys=true
 			rocket.shooter=ent
+			rocket.speed=1100
+			rocket.spin=true
 			rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
 			rocket:Spawn()
 			rocket:SetOwner(ply)
