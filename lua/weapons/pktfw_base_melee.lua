@@ -24,6 +24,9 @@ function SWEP:Initialize()
 end
 
 function SWEP:PrimaryAttack()
+	local pill_ent = pk_pills.getMappedEnt(self.Owner)
+	if IsValid(pill_ent) and pill_ent.iscloaked then return end
+
 	local range = 50
 	local dmg = self.damage
 	local dmg_type = self.damage_type

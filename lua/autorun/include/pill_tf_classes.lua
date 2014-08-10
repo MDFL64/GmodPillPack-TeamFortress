@@ -612,6 +612,16 @@ pk_pills.register("tf_spy",{
 		xInvert=true,
 		yInvert=true
 	},
+	attack2={
+		mode="trigger",
+		func=function(ply,ent)
+			ent:ToggleCloak()
+		end
+	},
+	cloak={
+		max=10,
+		rechargeRate=.3
+	},
 	anims={
 		default={
 			idle="stand_LOSER",
@@ -654,6 +664,10 @@ pk_pills.register("tf_spy",{
 			g_attack="AttackStand_PRIMARY",
 			//g_reload="ReloadStand_PRIMARY"
 		}*/
+	},
+	sounds={
+		cloak="player/spy_cloak.wav",
+		uncloak="player/spy_uncloak.wav"
 	},
 	loadout={"pill_wep_holstered","pktfw_knife","pktfw_revolver"},
 	movePoseMode="xy",

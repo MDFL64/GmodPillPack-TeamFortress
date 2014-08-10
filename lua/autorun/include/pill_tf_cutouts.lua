@@ -16,7 +16,7 @@ pk_pills.register("tf_scout_cutout",{
 		run=400
 	},
 	noragdoll=true,
-	jumpPower=400,
+	jumpPower=250,
 	health=125
 })
 
@@ -28,12 +28,11 @@ pk_pills.register("tf_soldier_cutout",{
 		walk=120,
 		run=240
 	},
-	jumpPower=250,
 	health=200
 })
 
 pk_pills.register("tf_pyro_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Pyro Cutout",
 	model="models/props_training/target_pyro.mdl",
 	moveSpeed={
@@ -44,7 +43,7 @@ pk_pills.register("tf_pyro_cutout",{
 })
 
 pk_pills.register("tf_demo_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Demoman Cutout",
 	model="models/props_training/target_demoman.mdl",
 	moveSpeed={
@@ -55,7 +54,7 @@ pk_pills.register("tf_demo_cutout",{
 })
 
 pk_pills.register("tf_heavy_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Heavy Cutout",
 	model="models/props_training/target_heavy.mdl",
 	moveSpeed={
@@ -66,7 +65,7 @@ pk_pills.register("tf_heavy_cutout",{
 })
 
 pk_pills.register("tf_engi_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Engineer Cutout",
 	model="models/props_training/target_engineer.mdl",
 	moveSpeed={
@@ -77,7 +76,7 @@ pk_pills.register("tf_engi_cutout",{
 })
 
 pk_pills.register("tf_medic_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Medic Cutout",
 	model="models/props_training/target_medic.mdl",
 	moveSpeed={
@@ -88,7 +87,7 @@ pk_pills.register("tf_medic_cutout",{
 })
 
 pk_pills.register("tf_sniper_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Sniper Cutout",
 	model="models/props_training/target_sniper.mdl",
 	moveSpeed={
@@ -99,7 +98,7 @@ pk_pills.register("tf_sniper_cutout",{
 })
 
 pk_pills.register("tf_spy_cutout",{
-	parent="tf_soldier_cutout",
+	parent="tf_scout_cutout",
 	printName="Spy Cutout",
 	model="models/props_training/target_spy.mdl",
 	moveSpeed={
