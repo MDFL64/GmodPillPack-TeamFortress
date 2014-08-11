@@ -259,6 +259,7 @@ pk_pills.register("tf_wizard",{
 	} end,
 	skin=0,
 	hull=Vector(50,50,140),
+	aim={},
 	anims={
 		default={
 			idle="stand_melee",
