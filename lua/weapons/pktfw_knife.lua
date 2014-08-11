@@ -13,6 +13,8 @@ SWEP.damage_type = DMG_SLASH
 SWEP.sound_swing = "weapons/knife_swing.wav"
 SWEP.sound_hit = "weapons/blade_hit1.wav"
 
+SWEP.backstabs=true
+
 function SWEP:Initialize()
 	self:SetHoldType("knife")
 end

@@ -31,15 +31,21 @@ function SWEP:PrimaryAttack()
 	local dmg = self.damage
 	local dmg_type = self.damage_type
 	
-	timer.Simple(self.interval*.25,function()
-		if IsValid(self) and IsValid(self.Owner) then
-			if self.Owner:TraceHullAttack(self.Owner:GetShootPos(),self.Owner:GetShootPos()+self.Owner:EyeAngles():Forward()*range, Vector(-5,-5,-5), Vector(5,5,5), dmg, dmg_type, dmg/100, true) then
-				self:EmitSound(self.sound_hit)
-			end
-		end
-	end)
-
 	if SERVER then
+		timer.Simple(self.interval*.25,function()
+			if IsValid(self) and IsValid(self.Owner) then
+				local hit = self.Owner:TraceHullAttack(self.Owner:GetShootPos(),self.Owner:GetShootPos()+self.Owner:EyeAngles():Forward()*range, Vector(-5,-5,-5), Vector(5,5,5), dmg, dmg_type, dmg/100, true)
+				if hit then
+					if self.backstabs and (hit:IsPlayer() or hit:IsNPC()) and hit:EyeAngles():Forward():Dot(self.Owner:EyeAngles():Forward())>.5 then
+						hit:TakeDamage(hit:Health()*2,self.Owner,self)
+						self:EmitSound("player/crit_hit.wav")
+					else
+						self:EmitSound(self.sound_hit)
+					end
+				end
+			end
+		end)
+
 		self:EmitSound(self.sound_swing)
 	end
 	
