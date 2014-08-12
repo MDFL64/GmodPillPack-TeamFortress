@@ -441,8 +441,8 @@ pk_pills.register("tf_engi",{
 			walk="run_SECONDARY",
 			crouch="crouch_SECONDARY",
 			crouch_walk="crouch_walk_SECONDARY",
-			jump="Jump_Start_secondary",
-			glide="Jump_Float_secondary",
+			jump="a_jumpstart_SECONDARY",
+			glide="a_jumpfloat_SECONDARY",
 			swim="swim_SECONDARY",
 			g_attack="AttackStand_SECONDARY",
 			g_reload="ReloadStand_SECONDARY"
@@ -452,8 +452,8 @@ pk_pills.register("tf_engi",{
 			walk="run_PRIMARY",
 			crouch="crouch_PRIMARY",
 			crouch_walk="crouch_walk_PRIMARY",
-			jump="Jump_Start_primary",
-			glide="Jump_Float_primary",
+			jump="a_jumpstart_PRIMARY",
+			glide="a_jumpfloat_PRIMARY",
 			swim="swim_PRIMARY",
 			g_attack="AttackStand_PRIMARY",
 			//g_reload="ReloadStand_PRIMARY"

@@ -28,7 +28,7 @@ SWEP.time_fire = .6
 SWEP.time_reload = .6
 
 function SWEP:Initialize()
-	self:SetWeaponHoldType("ar2")
+	self:SetHoldType("ar2")
 end
 
 function SWEP:PrimaryAttack()
