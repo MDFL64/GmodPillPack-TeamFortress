@@ -308,7 +308,7 @@ pk_pills.register("tf_demo",{
 			g_reload="ReloadStand_SECONDARY"
 		}*/
 	},
-	loadout={"pill_wep_holstered","pktfw_bottle","pktfw_grenadelauncher"},
+	loadout={"pill_wep_holstered","pktfw_bottle","pktfw_stickylauncher","pktfw_grenadelauncher"},
 	movePoseMode="xy",
 	noragdoll=false
 })
