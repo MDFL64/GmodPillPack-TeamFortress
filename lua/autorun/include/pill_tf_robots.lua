@@ -4,6 +4,7 @@ pk_pills.register("tf_sentrybuster",{
 	printName="Sentry Buster",
 	type="ply",
 	model="models/bots/demo/bot_sentry_buster.mdl",
+	attachments={},
 	modelScale=1.75,
 	options=function() return {
 		{icon="models/weapons/w_models/w_stickybomb.mdl"},

@@ -531,7 +531,7 @@ pk_pills.register("tf_medic",{
 			//g_reload="ReloadStand_PRIMARY"
 		}*/
 	},
-	loadout={"pill_wep_holstered","pktfw_bonesaw"},
+	loadout={"pill_wep_holstered","pktfw_bonesaw","pktfw_medigun","pktfw_syringegun"},
 	movePoseMode="xy",
 	noragdoll=false
 })

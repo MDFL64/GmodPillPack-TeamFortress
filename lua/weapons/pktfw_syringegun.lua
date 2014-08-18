@@ -4,16 +4,16 @@ SWEP.Category = "Pill Pack Weapons - TF2"
 SWEP.Spawnable=true
 SWEP.AdminSpawnable=true
 
-SWEP.PrintName="Rocket Launcher"
+SWEP.PrintName="Syringe Gun"
 
 SWEP.ViewModel = "models/weapons/c_arms_citizen.mdl"
-SWEP.WorldModel = "models/weapons/w_models/w_rocketlauncher.mdl"
+SWEP.WorldModel = "models/weapons/w_models/w_syringegun.mdl"
 
-SWEP.Primary.ClipSize	= 4
-SWEP.Primary.DefaultClip	= 20
+SWEP.Primary.ClipSize	= 40
+SWEP.Primary.DefaultClip	= 150
 SWEP.Primary.Automatic		= true
-SWEP.Primary.Ammo		= "RPG_Round"
- 
+SWEP.Primary.Ammo		= "SMG1"
+
 SWEP.Secondary.ClipSize	= -1
 SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic	= false
@@ -21,30 +21,29 @@ SWEP.Secondary.Ammo		= "none"
 
 SWEP.Slot=2
 
-SWEP.sound_fire = "weapons/rocket_shoot.wav"
-SWEP.sound_reload = "weapons/rocket_reload.wav"
+SWEP.sound_fire = "weapons/syringegun_shoot.wav"
+SWEP.sound_reload = "weapons/syringegun_worldreload.wav"
 
-SWEP.time_fire = .8
-SWEP.time_reload = .8
+SWEP.time_fire=.1
+SWEP.time_reload=1.6
 
 function SWEP:Initialize()
-	self:SetHoldType("rpg")
+	self:SetHoldType("smg")
 end
 
 function SWEP:PrimaryAttack()
 	if ( !self:CanPrimaryAttack() ) then return end
 
-	local rocket = ents.Create("pill_proj_rocket")
-	rocket:SetModel("models/weapons/w_models/w_rocket.mdl")
-	rocket:SetPos(self.Owner:GetShootPos())
-	rocket:SetAngles(self.Owner:EyeAngles())
-	rocket.speed=1100
-	rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
-	rocket.particle="rockettrail"
-	rocket:Spawn()
-	rocket:SetOwner(self.Owner)
+	local spread = 2
 
-	self.Owner:SetAnimation(PLAYER_ATTACK1)
+	local needle = ents.Create("pill_proj_arrow")
+	needle:SetModel("models/weapons/w_models/w_syringe_proj.mdl")
+	needle:SetPos(self.Owner:GetShootPos())
+	needle:SetAngles(self.Owner:EyeAngles()+Angle(math.Rand(-spread,spread),math.Rand(-spread,spread),0))
+	needle.damage=10
+	needle.speed=1000
+	needle:Spawn()
+	needle:SetOwner(self.Owner)
 	
 	if SERVER then
 		self:EmitSound(self.sound_fire)
@@ -63,9 +62,7 @@ function SWEP:Reload()
  
 	if (self:Clip1() < self.Primary.ClipSize and self.Owner:GetAmmoCount(self.Primary.Ammo) > 0) then
 		self:EmitSound(self.sound_reload)
-		self:SetClip1(self:Clip1()+1)
-		self.Owner:SetAmmo(self.Owner:GetAmmoCount(self.Primary.Ammo)-1,self.Primary.Ammo)
-		self.Owner:DoReloadEvent()
+		self:DefaultReload(ACT_INVALID)
 		self.ReloadingTime = CurTime() + self.time_reload
 		self:SetNextPrimaryFire(CurTime() + self.time_reload)
 	end

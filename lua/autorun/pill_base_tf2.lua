@@ -39,6 +39,10 @@ else
 	game.AddParticles("particles/rockettrail.pcf")
 	PrecacheParticleSystem("critical_rocket_red")
 	PrecacheParticleSystem("critical_rocket_blue")
+
+	game.AddParticles("particles/medicgun_beam.pcf")
+	PrecacheParticleSystem("medicgun_beam_blue")
+	PrecacheParticleSystem("medicgun_beam_red")
 end
 
 pk_pills.packStart("Team Fortress 2","tf2","games/16/tf.png")
