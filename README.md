@@ -7,4 +7,4 @@ You must have the base pack installed as well as TF2.
 
 Download the current "stable" version from the Steam Workshop. This is the "bleeding edge" development version.
 
-Feel free to contribute to this or make your own packs. Please model custom packs after this and the Episodic pack.
+Feel free to contribute to this or make your own packs. Please model custom packs after this or one of the other addon packs.
