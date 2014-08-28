@@ -540,6 +540,8 @@ pk_pills.register("tf_medic",{
 	default - humiliation
 	melee - melee
 	smg - smgs
+	crossbow - rifles
+	ar2 - rifles/zoomed
 */
 
 pk_pills.register("tf_sniper",{
@@ -601,7 +603,7 @@ pk_pills.register("tf_sniper",{
 			//g_reload="ReloadStand_PRIMARY"
 		}*/
 	},
-	loadout={"pill_wep_holstered","pktfw_kukri","pktfw_smg"},
+	loadout={"pill_wep_holstered","pktfw_kukri","pktfw_smg","pktfw_sniper"},
 	movePoseMode="xy",
 	noragdoll=false
 })

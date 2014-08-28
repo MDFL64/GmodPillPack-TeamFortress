@@ -149,7 +149,7 @@ function SWEP:Reload()
 	end*/
 end
 
-function SWEP:MoMoMoveSpeedMod()
+function SWEP:momo_speedMod()
 	if self.windupstart then return .478 end
 end
 
