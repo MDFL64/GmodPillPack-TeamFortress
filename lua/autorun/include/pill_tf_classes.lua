@@ -231,7 +231,7 @@ pk_pills.register("tf_pyro",{
 /*
 	default - humiliation
 	melee - melee
-	?pistol - stickies?
+	pistol - stickies
 	ar2 - grenade launcher
 */
 
@@ -272,16 +272,17 @@ pk_pills.register("tf_demo",{
 			swim="swim_MELEE",
 			g_attack="Melee_Swing"
 		},
-		/*shotgun={
-			idle="stand_SECONDARY",
-			walk="run_SECONDARY",
-			crouch="crouch_SECONDARY",
-			crouch_walk="crouch_walk_SECONDARY",
-			jump="Jump_Start_secondary",
-			glide="Jump_Float_secondary",
-			swim="swim_SECONDARY",
-			g_attack="AttackStand_SECONDARY"
-		},*/
+		pistol={
+			idle="stand_PRIMARY",
+			walk="run_PRIMARY",
+			crouch="crouch_PRIMARY",
+			crouch_walk="crouch_walk_PRIMARY",
+			jump="a_jumpstart_PRIMARY",
+			glide="a_jumpfloat_PRIMARY",
+			swim="swim_PRIMARY",
+			g_attack="AttackStand_PRIMARY",
+			g_reload="a_PRIMARY_reload"
+		},
 		ar2={
 			idle="stand_SECONDARY",
 			walk="run_SECONDARY",

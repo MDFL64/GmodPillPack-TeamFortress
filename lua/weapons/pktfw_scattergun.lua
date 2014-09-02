@@ -8,6 +8,8 @@ SWEP.AdminSpawnable=true
 SWEP.PrintName="Scattergun"
 SWEP.WorldModel = "models/weapons/w_models/w_scattergun.mdl"
 
+SWEP.Slot=2
+
 SWEP.Primary.ClipSize		= 6
 SWEP.Primary.DefaultClip	= 32
 

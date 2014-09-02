@@ -11,8 +11,6 @@ SWEP.Secondary.DefaultClip	= -1
 SWEP.Secondary.Automatic	= false
 SWEP.Secondary.Ammo		= "none"
 
-SWEP.Slot=2
-
 function SWEP:Initialize()
 	self:SetHoldType("shotgun")
 end

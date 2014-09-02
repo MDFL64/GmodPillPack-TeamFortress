@@ -39,8 +39,11 @@ pk_pills.register("tf_conga",{
 	autoRestartAnims=true,
 	hull=Vector(30,30,80),
 	moveSpeed={
-		walk=50,
-		run=50
+		walk=1
 	},
+	moveMod=function(ply,ent,mv,cmd)
+		local angs = mv:GetAngles()
+		mv:SetVelocity(angs:Forward()*50)
+	end,
 	health=500
 })
