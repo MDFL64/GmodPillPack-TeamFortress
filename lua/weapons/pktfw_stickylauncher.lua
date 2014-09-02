@@ -81,6 +81,7 @@ function SWEP:FireBomb()
 	nade.sticky=true
 	nade.tf2=true
 	nade.speed=920+self.charge*372.5
+	nade.particle="stickybombtrail_red"
 	nade:Spawn()
 	nade:SetOwner(self.Owner)
 

@@ -163,7 +163,7 @@ pk_pills.register("tf_soldier",{
 	default - humiliation
 	melee - melee
 	shotgun - shotguns
-	?rpg - rocket launcher?
+	crossbow- flamethrower
 */
 
 pk_pills.register("tf_pyro",{
@@ -212,20 +212,18 @@ pk_pills.register("tf_pyro",{
 			glide="a_jumpfloat_SECONDARY",
 			swim="swim_SECONDARY",
 			g_attack="AttackStand_SECONDARY"
-		}//,
-		/*rpg={
+		},
+		crossbow={
 			idle="stand_PRIMARY",
 			walk="run_PRIMARY",
 			crouch="crouch_PRIMARY",
 			crouch_walk="crouch_walk_PRIMARY",
-			jump="Jump_Start_primary",
-			glide="Jump_Float_primary",
-			swim="swim_PRIMARY",
-			g_attack="AttackStand_PRIMARY",
-			g_reload="ReloadStand_SECONDARY"
-		}*/
+			jump="a_jumpstart_PRIMARY",
+			glide="a_jumpfloat_PRIMARY",
+			swim="swim_PRIMARY"
+		}
 	},
-	loadout={"pill_wep_holstered","pktfw_fireaxe","pktfw_shotgun"},
+	loadout={"pill_wep_holstered","pktfw_fireaxe","pktfw_shotgun","pktfw_flamethrower"},
 	movePoseMode="xy",
 	noragdoll=false
 })
@@ -467,8 +465,8 @@ pk_pills.register("tf_engi",{
 /*
 	default - humiliation
 	melee - melee
-	pistol - pistols
-	shotgun - shotguns
+	ar2 - mediguns
+	smg - syringe guns
 */
 
 pk_pills.register("tf_medic",{
@@ -508,28 +506,28 @@ pk_pills.register("tf_medic",{
 			swim="swim_MELEE",
 			g_attack="MELEE_swing"
 		},
-		/*pistol={
+		ar2={
 			idle="stand_SECONDARY",
 			walk="run_SECONDARY",
 			crouch="crouch_SECONDARY",
 			crouch_walk="crouch_walk_SECONDARY",
-			jump="Jump_Start_secondary",
-			glide="Jump_Float_secondary",
+			jump="Jump_start_SECONDARY",
+			glide="Jump_float_SECONDARY",
 			swim="swim_SECONDARY",
-			g_attack="AttackStand_SECONDARY",
-			g_reload="ReloadStand_SECONDARY"
+			g_attack="AttackStand_SECONDARY"
+			//g_reload="ReloadStand_SECONDARY"
 		},
-		shotgun={
+		smg={
 			idle="stand_PRIMARY",
 			walk="run_PRIMARY",
 			crouch="crouch_PRIMARY",
 			crouch_walk="crouch_walk_PRIMARY",
-			jump="Jump_Start_primary",
-			glide="Jump_Float_primary",
+			jump="jump_start_PRIMARY",
+			glide="jump_float_PRIMARY",
 			swim="swim_PRIMARY",
 			g_attack="AttackStand_PRIMARY",
-			//g_reload="ReloadStand_PRIMARY"
-		}*/
+			g_reload="ReloadStand_PRIMARY"
+		}
 	},
 	loadout={"pill_wep_holstered","pktfw_bonesaw","pktfw_medigun","pktfw_syringegun"},
 	movePoseMode="xy",
@@ -591,17 +589,16 @@ pk_pills.register("tf_sniper",{
 			swim="swim_SECONDARY",
 			g_reload="ReloadStand_SECONDARY"
 		},
-		/*shotgun={
+		crossbow={
 			idle="stand_PRIMARY",
 			walk="run_PRIMARY",
 			crouch="crouch_PRIMARY",
 			crouch_walk="crouch_walk_PRIMARY",
-			jump="Jump_Start_primary",
-			glide="Jump_Float_primary",
+			jump="a_jumpstart_PRIMARY",
+			glide="a_jumpfloat_PRIMARY",
 			swim="swim_PRIMARY",
-			g_attack="AttackStand_PRIMARY",
-			//g_reload="ReloadStand_PRIMARY"
-		}*/
+			g_attack="AttackStand_PRIMARY"
+		}
 	},
 	loadout={"pill_wep_holstered","pktfw_kukri","pktfw_smg","pktfw_sniper"},
 	movePoseMode="xy",

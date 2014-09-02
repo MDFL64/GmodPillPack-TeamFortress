@@ -34,9 +34,11 @@ function SWEP:Initialize()
 end
 
 function SWEP:PrimaryAttack()
+	if !self:CanPrimaryAttack() then return end
+
 	if SERVER then self.primaryAttackCalled=true end
 
-	if !self:CanPrimaryAttack() or CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
+	if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
 
 	self:ShootBullet(9, 1, 0.04)
 	
@@ -149,7 +151,15 @@ function SWEP:Reload()
 	end*/
 end
 
-function SWEP:momo_speedMod()
+function SWEP:CanPrimaryAttack()
+	if self:Clip1() <= 0 then
+		return false
+	end
+
+	return true
+end
+
+function SWEP:momo_SpeedMod()
 	if self.windupstart then return .478 end
 end
 

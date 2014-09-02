@@ -41,6 +41,7 @@ function SWEP:PrimaryAttack()
 	nade.fuse=2.3
 	nade.tf2=true
 	nade.speed=1220
+	nade.particle="pipebombtrail_red"
 	nade:Spawn()
 	nade:SetOwner(self.Owner)
 

@@ -42,6 +42,7 @@ function SWEP:PrimaryAttack()
 	needle:SetAngles(self.Owner:EyeAngles()+Angle(math.Rand(-spread,spread),math.Rand(-spread,spread),0))
 	needle.damage=10
 	needle.speed=1000
+	needle.particle="nailtrails_medic_red"
 	needle:Spawn()
 	needle:SetOwner(self.Owner)
 	
