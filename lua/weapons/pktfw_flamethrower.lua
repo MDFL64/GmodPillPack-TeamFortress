@@ -20,72 +20,72 @@ SWEP.PrintName="Flame Thrower"
 SWEP.Category = "Pill Pack Weapons - TF2"
 SWEP.Slot=2
 
+function SWEP:SetupDataTables()
+	self:NetworkVar("Entity",0,"Emitter")
+end
+
 function SWEP:Initialize()
 	self:SetHoldType("crossbow")
+	
+	self.sound_flame = CreateSound(self,"weapons/flame_thrower_loop.wav")
+	
 	if SERVER then
-		self.sound_flame = CreateSound(self,"weapons/flame_thrower_loop.wav")
-		self.emitter = ents.Create("pill_target")
-		//self.emitter:SetParent(self)
-		self.emitter:Spawn()
+		local emitter = ents.Create("pill_target")
+		self:SetEmitter(emitter)
+		emitter:Spawn()
 	end
-	//todo setup sound
 end
 
 function SWEP:PrimaryAttack()
 	if ( !self:CanPrimaryAttack() ) then return end
 
-	if SERVER then
-		self.sound_flame:Play()
+	self.sound_flame:Play()
 
-		if self.Owner:WaterLevel()>=2 then
-			if self.particles!="bubbles" then
-				self.emitter:StopParticles()
-				ParticleEffectAttach("flamethrower_underwater",PATTACH_ABSORIGIN_FOLLOW,self.emitter,0)
-				self.particles="bubbles"
-			end
-		else
-			if self.particles!="flame" then
-				self.emitter:StopParticles()
-				ParticleEffectAttach("_flamethrower_real",PATTACH_ABSORIGIN_FOLLOW,self.emitter,0)
-				self.particles="flame"
-			end
+	
+	if self.Owner:WaterLevel()>=2 then
+		if CLIENT and self.particles!="bubbles" then
+			self:GetEmitter():StopParticles()
+			ParticleEffectAttach("flamethrower_underwater",PATTACH_ABSORIGIN_FOLLOW,self:GetEmitter(),0)
+			self.particles="bubbles"
+		end
+	else
+		if CLIENT and self.particles!="flame" then
+			self:GetEmitter():StopParticles()
+			ParticleEffectAttach("_flamethrower_real",PATTACH_ABSORIGIN_FOLLOW,self:GetEmitter(),0)
+			self.particles="flame"
+		end
 
+		if SERVER then
 			local target = self.Owner:TraceHullAttack(
-				self.Owner:GetPos()+Vector(0,0,40),
-				self.Owner:GetPos()+Vector(0,0,40)+self.Owner:EyeAngles():Forward()*200,
+				self.Owner:GetPos()+Vector(0,0,60),
+				self.Owner:GetPos()+Vector(0,0,60)+self.Owner:EyeAngles():Forward()*200,
 				Vector(-30,-30,-30), Vector(30,30,30),
 				5,DMG_BURN,0,true
 			)
 			if IsValid(target) then target:Ignite(10) end
-
-			//do attack here
 		end
 	end
 	
-	if self.takeammo then
-		self:TakePrimaryAmmo(1)
+	if SERVER then
+		if self.takeammo then
+			self:TakePrimaryAmmo(1)
+		end
+		self.takeammo= !self.takeammo
 	end
-	self.takeammo= !self.takeammo
 
 	self:SetNextPrimaryFire(CurTime() + .04)
 end
 
 function SWEP:Think()
-	if SERVER then
-		//print(CurTime(),self:GetNextPrimaryFire())
-		if self:GetNextPrimaryFire()+.1<CurTime() then
-			//print("~")
-			self.sound_flame:Stop()
-			if self.particles then
-				self.emitter:StopParticles()
-				self.particles=nil
-			end
+	if self:GetNextPrimaryFire()+.01<CurTime() then
+		self.sound_flame:Stop()
+		if CLIENT and self.particles then
+			self:GetEmitter():StopParticles()
+			self.particles=nil
 		end
-		self.emitter:SetPos(self.Owner:GetPos()+Vector(0,0,40)+self.Owner:EyeAngles():Forward()*50)
-		self.emitter:SetAngles(self.Owner:EyeAngles())
-		//debugoverlay.Cross(self.emitter:GetPos(),10,1,Color(255,0,0))
-		//print("mov")
 	end
+	self:GetEmitter():SetNetworkOrigin(self.Owner:GetPos()+Vector(0,0,60)+self.Owner:EyeAngles():Forward()*50)
+	self:GetEmitter():SetAngles(self.Owner:EyeAngles())
 end
 
 function SWEP:SecondaryAttack()

@@ -34,21 +34,21 @@ end
 function SWEP:PrimaryAttack()
 	if ( !self:CanPrimaryAttack() ) then return end
 
-	local rocket = ents.Create("pill_proj_rocket")
-	rocket:SetModel("models/weapons/w_models/w_rocket.mdl")
-	rocket:SetPos(self.Owner:GetShootPos())
-	rocket:SetAngles(self.Owner:EyeAngles())
-	rocket.speed=1100
-	rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
-	rocket.particle="rockettrail"
-	rocket:Spawn()
-	rocket:SetOwner(self.Owner)
+	if SERVER then
+		local rocket = ents.Create("pill_proj_rocket")
+		rocket:SetModel("models/weapons/w_models/w_rocket.mdl")
+		rocket:SetPos(self.Owner:GetShootPos())
+		rocket:SetAngles(self.Owner:EyeAngles())
+		rocket.speed=1100
+		rocket.altExplode={particle="ExplosionCore_MidAir",sound="weapons/explode1.wav"}
+		rocket:SetParticle("rockettrail")
+		rocket:Spawn()
+		rocket:SetOwner(self.Owner)
+	end
 
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	
-	if SERVER then
-		self:EmitSound(self.sound_fire)
-	end
+	self:EmitSound(self.sound_fire)
 	
 	self:TakePrimaryAmmo(1)
 

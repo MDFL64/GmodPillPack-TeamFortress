@@ -24,43 +24,43 @@ AddCSLuaFile()
 
 if SERVER then
 	resource.AddWorkshop("258248317")
-else
-	game.AddParticles("particles/explosion.pcf")
-	PrecacheParticleSystem("ExplosionCore_MidAir")
-
-	game.AddParticles("particles/bigboom.pcf")
-	PrecacheParticleSystem("fireSmokeExplosion")
-
-	game.AddParticles("particles/dirty_explode.pcf")
-	PrecacheParticleSystem("cinefx_goldrush")
-
-	game.AddParticles("particles/eyeboss.pcf")
-	PrecacheParticleSystem("eyeboss_projectile")
-	
-	game.AddParticles("particles/rockettrail.pcf")
-	PrecacheParticleSystem("critical_rocket_red")
-	PrecacheParticleSystem("critical_rocket_blue")
-
-	game.AddParticles("particles/medicgun_beam.pcf")
-	PrecacheParticleSystem("medicgun_beam_blue")
-	PrecacheParticleSystem("medicgun_beam_red")
-
-	game.AddParticles("particles/flamethrower.pcf")
-	PrecacheParticleSystem("_flamethrower_real")
-	PrecacheParticleSystem("flamethrower_underwater")
-
-	game.AddParticles("particles/nailtrails.pcf")
-	PrecacheParticleSystem("nailtrails_medic_red")
-	PrecacheParticleSystem("nailtrails_medic_blue")
-
-	game.AddParticles("particles/stickybomb.pcf")
-	PrecacheParticleSystem("stickybombtrail_red")
-	PrecacheParticleSystem("stickybombtrail_blue")
-	PrecacheParticleSystem("pipebombtrail_red")
-	PrecacheParticleSystem("pipebombtrail_blue")
-	PrecacheParticleSystem("stickybomb_pulse_red")
-	PrecacheParticleSystem("stickybomb_pulse_blue")
 end
+
+game.AddParticles("particles/explosion.pcf")
+PrecacheParticleSystem("ExplosionCore_MidAir")
+
+game.AddParticles("particles/bigboom.pcf")
+PrecacheParticleSystem("fireSmokeExplosion")
+
+game.AddParticles("particles/dirty_explode.pcf")
+PrecacheParticleSystem("cinefx_goldrush")
+
+game.AddParticles("particles/eyeboss.pcf")
+PrecacheParticleSystem("eyeboss_projectile")
+
+game.AddParticles("particles/rockettrail.pcf")
+PrecacheParticleSystem("critical_rocket_red")
+PrecacheParticleSystem("critical_rocket_blue")
+
+game.AddParticles("particles/medicgun_beam.pcf")
+PrecacheParticleSystem("medicgun_beam_blue")
+PrecacheParticleSystem("medicgun_beam_red")
+
+game.AddParticles("particles/flamethrower.pcf")
+PrecacheParticleSystem("_flamethrower_real")
+PrecacheParticleSystem("flamethrower_underwater")
+
+game.AddParticles("particles/nailtrails.pcf")
+PrecacheParticleSystem("nailtrails_medic_red")
+PrecacheParticleSystem("nailtrails_medic_blue")
+
+game.AddParticles("particles/stickybomb.pcf")
+PrecacheParticleSystem("stickybombtrail_red")
+PrecacheParticleSystem("stickybombtrail_blue")
+PrecacheParticleSystem("pipebombtrail_red")
+PrecacheParticleSystem("pipebombtrail_blue")
+PrecacheParticleSystem("stickybomb_pulse_red")
+PrecacheParticleSystem("stickybomb_pulse_blue")
 
 pk_pills.packStart("Team Fortress 2","tf2","games/16/tf.png")
 pk_pills.packRequireGame("Team Fortress 2",440)
