@@ -36,19 +36,25 @@ end
 function SWEP:PrimaryAttack()
 	if !self:CanPrimaryAttack() then return end
 
-	if SERVER then self.primaryAttackCalled=true end
+	self.primaryAttackCalled=true
 
-	if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
+	if SERVER then
+		if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
 
-	self:ShootBullet(9, 1, 0.04)
-	
-	self:TakePrimaryAmmo(1)
+		self:ShootBullet(9, 1, 0.04)
+		
+		self:TakePrimaryAmmo(1)
 
-	self.Owner:SetAnimation(PLAYER_ATTACK1)
+		self.Owner:SetAnimation(PLAYER_ATTACK1)
 
-	self.lastattack=CurTime()
+		self.lastattack=CurTime()
+	end
 
 	//self:SetNextPrimaryFire(CurTime() + .1)
+end
+
+function SWEP:SecondaryAttack()
+	self.secondaryAttackCalled=true
 end
 
 if SERVER then
@@ -135,10 +141,6 @@ else
 end
 
 //function SWEP:Remove()
-
-function SWEP:SecondaryAttack()
-	if SERVER then self.secondaryAttackCalled=true end
-end
 
 function SWEP:Reload()
 	/*if self.ReloadingTime and CurTime() <= self.ReloadingTime then return end
