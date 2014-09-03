@@ -21,11 +21,16 @@ SWEP.Secondary.Ammo		= "none"
 
 SWEP.Slot=1
 
+function ENT:SetupDataTables()
+	self:NetworkVar("Bool",0,"BeamActive")
+end
+
 function SWEP:Initialize()
 	self:SetHoldType("ar2")
-	if SERVER then
-		self.sound_heal = CreateSound(self,"weapons/medigun_heal.wav")
+	
+	self.sound_heal = CreateSound(self,"weapons/medigun_heal.wav")
 
+	if SERVER then
 		//Credit to http://steamcommunity.com/id/steemeyedee (Medi Gun beam poser)
 		self.beam = ents.Create("info_particle_system")
 		//self.beam:SetPos(self:GetPos())
@@ -41,12 +46,10 @@ function SWEP:Initialize()
 
 		self.beam:Spawn()
 		self.beam:Activate()
-		self.beamactive=false
 	end
 end
 
 function SWEP:OnRemove()
-	if CLIENT then return end
 	self.sound_heal:Stop()
 end
 
@@ -68,9 +71,9 @@ function SWEP:Think()
 				self.targetpoint:SetParent(self.target)
 				self.targetpoint:SetLocalPos(Vector(0,0,30))
 			end
-			if !self.beamactive then
+			if !self:GetBeamActive() then
 				self.beam:Fire("Start")
-				self.beamactive=true
+				self:SetBeamActive(true)
 			end
 			local h = self.target:Health()
 			local mh = self.target:GetMaxHealth()*1.5
@@ -83,15 +86,21 @@ function SWEP:Think()
 			end
 		else
 			self.sound_heal:Stop()
-			if self.beamactive then
+			if self:GetBeamActive() then
 				self.beam:Fire("Stop")
-				self.beamactive=false
+				self:SetBeamActive(false)
 			end
 		end
 
 
 		self:NextThink(CurTime())
 		return true
+	else
+		if self:GetBeamActive() then
+			self.sound_heal:Play()
+		else
+			self.sound_heal:Stop()
+		end
 	end
 end
 

@@ -52,11 +52,11 @@ function SWEP:PrimaryAttack()
 	end
 	self.Owner:FireBullets(bullet)
 	
-	if SERVER then
-		self:EmitSound(self.sound_fire)
+	self:EmitSound(self.sound_fire)
 
+	timer.Simple(self.time_fire/2,function() if !IsValid(self) then return end self:EmitSound(self.sound_reload) end)
+	if SERVER then
 		timer.Simple(self.time_fire/4,function() if !IsValid(self) then return end self:SetScoped(false) end)
-		timer.Simple(self.time_fire/2,function() if !IsValid(self) then return end self:EmitSound(self.sound_reload) end)
 	end
 	
 	self:TakePrimaryAmmo(1)

@@ -33,17 +33,18 @@ end
 
 function SWEP:PrimaryAttack()
 	if ( !self:CanPrimaryAttack() ) then return end
-
-	local nade = ents.Create("pill_proj_bomb")
-	nade:SetModel("models/weapons/w_models/w_grenade_grenadelauncher.mdl")
-	nade:SetPos(self.Owner:GetShootPos())
-	nade:SetAngles(self.Owner:EyeAngles())
-	nade.fuse=2.3
-	nade.tf2=true
-	nade.speed=1220
-	nade:SetParticle("pipebombtrail_red")
-	nade:Spawn()
-	nade:SetOwner(self.Owner)
+	if SERVER then
+		local nade = ents.Create("pill_proj_bomb")
+		nade:SetModel("models/weapons/w_models/w_grenade_grenadelauncher.mdl")
+		nade:SetPos(self.Owner:GetShootPos())
+		nade:SetAngles(self.Owner:EyeAngles())
+		nade.fuse=2.3
+		nade.tf2=true
+		nade.speed=1220
+		nade:SetParticle("pipebombtrail_red")
+		nade:Spawn()
+		nade:SetOwner(self.Owner)
+	end
 
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	

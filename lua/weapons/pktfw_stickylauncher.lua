@@ -73,17 +73,19 @@ function SWEP:Holster()
 end
 
 function SWEP:FireBomb()
-	local nade = ents.Create("pill_proj_bomb")
-	nade:SetModel("models/weapons/w_models/w_stickybomb.mdl")
-	nade:SetPos(self.Owner:GetShootPos())
-	nade:SetAngles(self.Owner:EyeAngles())
-	nade.fuse=.7
-	nade.sticky=true
-	nade.tf2=true
-	nade.speed=920+self.charge*372.5
-	nade:SetParticle("stickybombtrail_red")
-	nade:Spawn()
-	nade:SetOwner(self.Owner)
+	if SERVER then
+		local nade = ents.Create("pill_proj_bomb")
+		nade:SetModel("models/weapons/w_models/w_stickybomb.mdl")
+		nade:SetPos(self.Owner:GetShootPos())
+		nade:SetAngles(self.Owner:EyeAngles())
+		nade.fuse=.7
+		nade.sticky=true
+		nade.tf2=true
+		nade.speed=920+self.charge*372.5
+		nade:SetParticle("stickybombtrail_red")
+		nade:Spawn()
+		nade:SetOwner(self.Owner)
+	end
 
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	

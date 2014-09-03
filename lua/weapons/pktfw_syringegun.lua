@@ -36,19 +36,19 @@ function SWEP:PrimaryAttack()
 
 	local spread = 2
 
-	local needle = ents.Create("pill_proj_arrow")
-	needle:SetModel("models/weapons/w_models/w_syringe_proj.mdl")
-	needle:SetPos(self.Owner:GetShootPos())
-	needle:SetAngles(self.Owner:EyeAngles()+Angle(math.Rand(-spread,spread),math.Rand(-spread,spread),0))
-	needle.damage=10
-	needle.speed=1000
-	needle.particle="nailtrails_medic_red"
-	needle:Spawn()
-	needle:SetOwner(self.Owner)
-	
 	if SERVER then
-		self:EmitSound(self.sound_fire)
+		local needle = ents.Create("pill_proj_arrow")
+		needle:SetModel("models/weapons/w_models/w_syringe_proj.mdl")
+		needle:SetPos(self.Owner:GetShootPos())
+		needle:SetAngles(self.Owner:EyeAngles()+Angle(math.Rand(-spread,spread),math.Rand(-spread,spread),0))
+		needle.damage=10
+		needle.speed=1000
+		needle.particle="nailtrails_medic_red"
+		needle:Spawn()
+		needle:SetOwner(self.Owner)
 	end
+
+	self:EmitSound(self.sound_fire)
 	
 	self:TakePrimaryAmmo(1)
 
