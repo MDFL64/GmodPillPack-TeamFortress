@@ -45,9 +45,9 @@ function SWEP:PrimaryAttack()
 				end
 			end
 		end)
-
-		self:EmitSound(self.sound_swing)
 	end
+
+	self:EmitSound(self.sound_swing)
 	
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 

@@ -23,9 +23,7 @@ function SWEP:PrimaryAttack()
 
 	self:ShootBullet(self.bullet_dmg, self.bullet_count or 1, self.bullet_spread)
 	
-	if SERVER then
-		self:EmitSound(self.sound_fire)
-	end
+	self:EmitSound(self.sound_fire)
 	
 	self:TakePrimaryAmmo(1)
 
