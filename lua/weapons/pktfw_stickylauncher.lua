@@ -81,15 +81,13 @@ function SWEP:FireBomb()
 	nade.sticky=true
 	nade.tf2=true
 	nade.speed=920+self.charge*372.5
-	nade.particle="stickybombtrail_red"
+	nade:SetParticle("stickybombtrail_red")
 	nade:Spawn()
 	nade:SetOwner(self.Owner)
 
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	
-	if SERVER then
-		self:EmitSound(self.sound_fire)
-	end
+	self:EmitSound(self.sound_fire)
 	
 	self:TakePrimaryAmmo(1)
 

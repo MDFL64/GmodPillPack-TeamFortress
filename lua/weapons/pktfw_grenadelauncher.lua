@@ -41,15 +41,14 @@ function SWEP:PrimaryAttack()
 	nade.fuse=2.3
 	nade.tf2=true
 	nade.speed=1220
-	nade.particle="pipebombtrail_red"
+	nade:SetParticle("pipebombtrail_red")
 	nade:Spawn()
 	nade:SetOwner(self.Owner)
 
 	self.Owner:SetAnimation(PLAYER_ATTACK1)
 	
-	if SERVER then
-		self:EmitSound(self.sound_fire)
-	end
+
+	self:EmitSound(self.sound_fire)
 	
 	self:TakePrimaryAmmo(1)
 
