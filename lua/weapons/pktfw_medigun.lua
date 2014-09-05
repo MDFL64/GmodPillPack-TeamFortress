@@ -21,7 +21,7 @@ SWEP.Secondary.Ammo		= "none"
 
 SWEP.Slot=1
 
-function ENT:SetupDataTables()
+function SWEP:SetupDataTables()
 	self:NetworkVar("Bool",0,"BeamActive")
 end
 

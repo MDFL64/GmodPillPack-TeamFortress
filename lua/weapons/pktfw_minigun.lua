@@ -22,12 +22,13 @@ SWEP.Slot=2
 
 function SWEP:Initialize()
 	self:SetHoldType("slam")
-	if SERVER then
-		self.sound_shoot = CreateSound(self,"weapons/minigun_shoot.wav")
-		self.sound_spin = CreateSound(self,"weapons/minigun_spin.wav")
-		self.sound_windup = CreateSound(self,"weapons/minigun_wind_up.wav")
-		self.sound_winddown = CreateSound(self,"weapons/minigun_wind_down.wav")
 
+	self.sound_shoot = CreateSound(self,"weapons/minigun_shoot.wav")
+	self.sound_spin = CreateSound(self,"weapons/minigun_spin.wav")
+	self.sound_windup = CreateSound(self,"weapons/minigun_wind_up.wav")
+	self.sound_winddown = CreateSound(self,"weapons/minigun_wind_down.wav")
+
+	if SERVER then
 		self.lastattack = 0
 		//self.windupstart = -1
 	end
@@ -42,6 +43,7 @@ function SWEP:PrimaryAttack()
 		if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
 
 		self:ShootBullet(9, 1, 0.04)
+		print("b>")
 		
 		self:TakePrimaryAmmo(1)
 
@@ -166,7 +168,6 @@ function SWEP:momo_SpeedMod()
 end
 
 function SWEP:OnRemove()
-	if CLIENT then return end
 	self.sound_shoot:Stop()
 	self.sound_spin:Stop()
 	self.sound_windup:Stop()

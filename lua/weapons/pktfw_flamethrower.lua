@@ -43,13 +43,13 @@ function SWEP:PrimaryAttack()
 
 	
 	if self.Owner:WaterLevel()>=2 then
-		if CLIENT and self.particles!="bubbles" then
+		if CLIENT and IsValid(self:GetEmitter()) and self.particles!="bubbles" then
 			self:GetEmitter():StopParticles()
 			ParticleEffectAttach("flamethrower_underwater",PATTACH_ABSORIGIN_FOLLOW,self:GetEmitter(),0)
 			self.particles="bubbles"
 		end
 	else
-		if CLIENT and self.particles!="flame" then
+		if CLIENT and IsValid(self:GetEmitter()) and self.particles!="flame" then
 			self:GetEmitter():StopParticles()
 			ParticleEffectAttach("_flamethrower_real",PATTACH_ABSORIGIN_FOLLOW,self:GetEmitter(),0)
 			self.particles="flame"
@@ -77,15 +77,17 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:Think()
-	if self:GetNextPrimaryFire()+.01<CurTime() then
+	if self:GetNextPrimaryFire()+.05<CurTime() then
 		self.sound_flame:Stop()
 		if CLIENT and self.particles then
 			self:GetEmitter():StopParticles()
 			self.particles=nil
 		end
 	end
-	self:GetEmitter():SetNetworkOrigin(self.Owner:GetPos()+Vector(0,0,60)+self.Owner:EyeAngles():Forward()*50)
-	self:GetEmitter():SetAngles(self.Owner:EyeAngles())
+	if IsValid(self:GetEmitter()) then
+		self:GetEmitter():SetNetworkOrigin(self.Owner:GetPos()+Vector(0,0,60)+self.Owner:EyeAngles():Forward()*50)
+		self:GetEmitter():SetAngles(self.Owner:EyeAngles())
+	end
 end
 
 function SWEP:SecondaryAttack()

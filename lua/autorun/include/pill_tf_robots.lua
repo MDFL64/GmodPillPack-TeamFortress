@@ -168,6 +168,7 @@ pk_pills.register("tf_bot_scout",{
 	printName="Scout Bot",
 	model="models/bots/scout/bot_scout.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -182,6 +183,7 @@ pk_pills.register("tf_bot_soldier",{
 	printName="Soldier Bot",
 	model="models/bots/soldier/bot_soldier.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -196,6 +198,7 @@ pk_pills.register("tf_bot_pyro",{
 	printName="Pyro Bot",
 	model="models/bots/pyro/bot_pyro.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -210,6 +213,7 @@ pk_pills.register("tf_bot_demo",{
 	printName="Demoman Bot",
 	model="models/bots/demo/bot_demo.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -224,6 +228,7 @@ pk_pills.register("tf_bot_heavy",{
 	printName="Heavy Bot",
 	model="models/bots/heavy/bot_heavy.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -238,6 +243,7 @@ pk_pills.register("tf_bot_engi",{
 	printName="Engineer Bot",
 	model="models/bots/engineer/bot_engineer.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -252,11 +258,9 @@ pk_pills.register("tf_bot_medic",{
 	printName="Medic Bot",
 	model="models/bots/medic/bot_medic.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
-	sounds={
-		step=bot_steps
-	},
 	noragdoll=true,
 	damageFromWater=-1
 })
@@ -266,6 +270,7 @@ pk_pills.register("tf_bot_sniper",{
 	printName="Sniper Bot",
 	model="models/bots/sniper/bot_sniper.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -280,6 +285,7 @@ pk_pills.register("tf_bot_spy",{
 	printName="Spy Bot",
 	model="models/bots/spy/bot_spy.mdl",
 	skin=1,
+	duckBy=0,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
