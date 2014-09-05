@@ -29,19 +29,19 @@ SWEP.time_reload = .7
 
 function SWEP:Initialize()
 	self:SetHoldType("pistol")
-	if SERVER then
+	//if SERVER then
 		self.charge=0
 		self.sound_charge = CreateSound(self,"weapons/stickybomblauncher_charge_up.wav")
-	end
+	//end
 end
 
 function SWEP:OnRemove()
-	if CLIENT then return end
+	//if CLIENT then return end
 	self.sound_charge:Stop()
 end
 
 function SWEP:Think()
-	if SERVER then
+	//if SERVER then
 		if self.Owner:KeyDown(IN_ATTACK) and self:CanPrimaryAttack() and CurTime()>=self:GetNextPrimaryFire() then
 			self.sound_charge:Play()
 			self.charge=self.charge+FrameTime()
@@ -61,14 +61,14 @@ function SWEP:Think()
 
 		self:NextThink(CurTime())
 		return true
-	end
+	//end
 end
 
 function SWEP:Holster()
-	if SERVER then
+	//if SERVER then
 		self.charge=0
 		self.sound_charge:Stop()
-	end
+	//end
 	return true
 end
 

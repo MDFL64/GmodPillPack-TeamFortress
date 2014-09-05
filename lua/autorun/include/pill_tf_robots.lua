@@ -163,12 +163,28 @@ local bot_steps = table.Add(
 	pk_pills.helpers.makeList("mvm/player/footsteps/robostep_1#.wav",0,8)
 )
 
+local noduck_anims = {}
+
+local holdtypes= {
+	"default","pistol","smg","grenade","ar2","shotgun","rpg","physgun","crossbow",
+	"melee","slam","normal","fist","melee2","passive","knife","duel","camera",
+	"magic","revolver"
+}
+
+for k,v in pairs(holdtypes) do
+	noduck_anims[v]={
+		crouch=false,
+		crouch_walk=false,
+	}
+end
+
 pk_pills.register("tf_bot_scout",{
 	parent="tf_scout",
 	printName="Scout Bot",
 	model="models/bots/scout/bot_scout.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -184,6 +200,7 @@ pk_pills.register("tf_bot_soldier",{
 	model="models/bots/soldier/bot_soldier.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -199,6 +216,7 @@ pk_pills.register("tf_bot_pyro",{
 	model="models/bots/pyro/bot_pyro.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -214,6 +232,7 @@ pk_pills.register("tf_bot_demo",{
 	model="models/bots/demo/bot_demo.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -229,6 +248,7 @@ pk_pills.register("tf_bot_heavy",{
 	model="models/bots/heavy/bot_heavy.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -244,6 +264,7 @@ pk_pills.register("tf_bot_engi",{
 	model="models/bots/engineer/bot_engineer.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -259,6 +280,7 @@ pk_pills.register("tf_bot_medic",{
 	model="models/bots/medic/bot_medic.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	noragdoll=true,
@@ -271,6 +293,7 @@ pk_pills.register("tf_bot_sniper",{
 	model="models/bots/sniper/bot_sniper.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
@@ -286,6 +309,7 @@ pk_pills.register("tf_bot_spy",{
 	model="models/bots/spy/bot_spy.mdl",
 	skin=1,
 	duckBy=0,
+	anims=noduck_anims,
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	sounds={
