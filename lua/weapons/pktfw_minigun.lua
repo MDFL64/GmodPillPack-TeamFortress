@@ -28,10 +28,10 @@ function SWEP:Initialize()
 	self.sound_windup = CreateSound(self,"weapons/minigun_wind_up.wav")
 	self.sound_winddown = CreateSound(self,"weapons/minigun_wind_down.wav")
 
-	if SERVER then
+	//if SERVER then
 		self.lastattack = 0
 		//self.windupstart = -1
-	end
+	//end
 end
 
 function SWEP:PrimaryAttack()
@@ -39,18 +39,15 @@ function SWEP:PrimaryAttack()
 
 	self.primaryAttackCalled=true
 
-	if SERVER then
-		if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
+	if CurTime()<self.lastattack+.1 or !self.windupstart or self.windupstart+.87>CurTime() then return end
 
-		self:ShootBullet(9, 1, 0.04)
-		print("b>")
-		
-		self:TakePrimaryAmmo(1)
+	self:ShootBullet(9, 1, 0.04)
+	
+	self:TakePrimaryAmmo(1)
 
-		self.Owner:SetAnimation(PLAYER_ATTACK1)
+	self.Owner:SetAnimation(PLAYER_ATTACK1)
 
-		self.lastattack=CurTime()
-	end
+	self.lastattack=CurTime()
 
 	//self:SetNextPrimaryFire(CurTime() + .1)
 end
@@ -59,7 +56,7 @@ function SWEP:SecondaryAttack()
 	self.secondaryAttackCalled=true
 end
 
-if SERVER then
+//if SERVER then
 	function SWEP:Think()
 			/*if self.lastShot+.11>=CurTime() then
 				if !self.sound_shoot:IsPlaying() then
@@ -126,7 +123,8 @@ if SERVER then
 		self.primaryAttackCalled = false
 		self.secondaryAttackCalled = false
 	end
-else
+
+/*else
 	function SWEP:Think()
 		if self.primaryAttackCalled or self.secondaryAttackCalled then
 			if !self.windupstart then
@@ -140,7 +138,7 @@ else
 		self.primaryAttackCalled = false
 		self.secondaryAttackCalled = false
 	end
-end
+end*/
 
 //function SWEP:Remove()
 
