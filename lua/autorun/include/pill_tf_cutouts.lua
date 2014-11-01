@@ -17,6 +17,23 @@ pk_pills.register("tf_scout_cutout",{
 	},
 	noragdoll=true,
 	jumpPower=250,
+	moveMod=function(ply,ent,mv,cmd)
+		if !ply:IsOnGround() then
+			if ent.hasDoubleJump and mv:KeyPressed(IN_JUMP) then
+				local vel = mv:GetVelocity()
+
+				vel.z=ply:GetJumpPower()
+
+				mv:SetVelocity(vel)
+
+				ent.hasDoubleJump=false
+
+				ply:DoCustomAnimEvent(PLAYERANIMEVENT_JUMP,0)
+			end
+		else
+			ent.hasDoubleJump=true
+		end
+	end,
 	health=125
 })
 

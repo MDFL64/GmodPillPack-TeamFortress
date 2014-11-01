@@ -167,10 +167,15 @@ pk_pills.register("tf_ghost",{
 	},
 	moveSpeed={
 		walk=200,
-		run=1000
+		run=400
 	},
 	jumpPower=500,
-	flies=true
+	moveMod=function(ply,ent,mv,cmd)
+		if (cmd:KeyDown(IN_JUMP)) then
+			local angs = mv:GetAngles()
+			mv:SetVelocity(angs:Forward()*400+Vector(0,0,200))
+		end
+	end
 	//health=3000
 })
 

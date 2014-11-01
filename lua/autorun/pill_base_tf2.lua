@@ -69,7 +69,10 @@ include("include/pill_tf_sentry.lua")
 include("include/pill_tf_robots.lua")
 include("include/pill_tf_spooky.lua")
 
-include("include/pill_tf_cutouts.lua")
 include("include/pill_tf_classes.lua")
 
+pk_pills.packStart("TF2 - Fun","tf2","pack_icon_funtf.png")
+pk_pills.packRequireGame("Team Fortress 2",440)
+
+include("include/pill_tf_cutouts.lua")
 include("include/pill_tf_fun.lua")

@@ -12,7 +12,7 @@ pk_pills.register("tf_sentrybuster",{
 	} end,
 	default_rp_cost=10000,
 	camera={
-		offset=Vector(0,0,50),
+		offset=Vector(0,0,100),
 		dist=200
 	},
 	hull=Vector(50,50,120),
@@ -150,8 +150,16 @@ pk_pills.register("tf_tank",{
 	noragdoll=true,
 	noFallDamage=true,
 	moveSpeed={
-		walk=50
+		walk=1
 	},
+	moveMod=function(ply,ent,mv,cmd)
+		if cmd:KeyDown(IN_FORWARD) then
+			local angs = mv:GetAngles()
+			local vz = mv:GetVelocity().z
+			angs.pitch=0
+			mv:SetVelocity(angs:Forward()*50+Vector(0,0,vz))
+		end
+	end,
 	jumpPower=0,
 	health=30000,
 	damageFromWater=-1
@@ -284,6 +292,7 @@ pk_pills.register("tf_bot_medic",{
 	default_rp_cost=12000,
 	movePoseMode="xy-bot",
 	noragdoll=true,
+	muteSteps=true,
 	damageFromWater=-1
 })
 
@@ -341,11 +350,12 @@ pk_pills.register("tf_bot_worker_a",{
 		walk=150,
 		run=300
 	},
-	health=300
+	health=300,
+	muteSteps=true
 })
 
 pk_pills.register("tf_bot_worker_b",{
-	printName="Worker Bot Beta",
+	printName="Worker Bot Bravo",
 	side="harmless",
 	type="ply",
 	model="models/bots/bot_worker/bot_worker2.mdl",
@@ -366,7 +376,8 @@ pk_pills.register("tf_bot_worker_b",{
 		walk=150,
 		run=300
 	},
-	health=500
+	health=500,
+	muteSteps=true
 })
 
 pk_pills.register("tf_bot_worker_c",{
@@ -393,5 +404,183 @@ pk_pills.register("tf_bot_worker_c",{
 		walk=150,
 		run=300
 	},
-	health=500
+	health=500,
+	muteSteps=true
+})
+
+pk_pills.register("tf_bot_worker_d",{
+	printName="Worker Bot Delta",
+	side="harmless",
+	type="ply",
+	model="models/bots/bot_worker/bot_worker_a.mdl",
+	options=function() return {
+		{skin=0},
+		{skin=1}
+	} end,
+	skin=0,
+	bodyGroups={1,2},
+	noragdoll=true,
+	default_rp_cost=8000,
+	camera={
+		offset=Vector(0,0,50),
+		dist=120
+	},
+	hull=Vector(40,40,60),
+	anims={
+		default={
+			idle="idle",
+			jump="panic_start_a",
+			glide="panic",
+			fly="draw_bot_idle"
+		}
+	},
+	sounds={
+		loop_fly="weapons/rpg/rocket1.wav"
+	},
+	moveSpeed={
+		walk=150,
+		run=300
+	},
+	moveMod=function(ply,ent,mv,cmd)
+		if (cmd:KeyDown(IN_DUCK)) then
+			local angs = mv:GetAngles()
+			mv:SetVelocity(angs:Forward()*600+Vector(0,0,300))
+			ent:PillAnimTick("fly")
+			if !ent.bot_flying then
+				ent:PillLoopSound("fly")
+				ParticleEffectAttach("rockettrail", PATTACH_POINT_FOLLOW,ent,ent:LookupAttachment("top"))
+				ent.bot_flying=true
+			end
+		elseif ent.bot_flying then
+			ent:PillLoopStop("fly")
+			ent:StopParticles( )
+			ent.bot_flying=false
+		end
+	end,
+	health=200,
+	muteSteps=true
+})
+
+local function idiotfix(a)
+	local t = table.Copy(a)
+	table.Add(t,a)
+	table.Add(t,a)
+	table.Add(t,a)
+	table.Add(t,a)
+	return t
+end
+
+pk_pills.register("tf_bot_scout_giant",{
+	parent="tf_bot_scout",
+	printName="Giant Scout Bot",
+	modelScale=1.75,
+	health=1600,
+	default_rp_cost=30000,
+	camera={
+		offset=Vector(0,0,100),
+		dist=200
+	},
+	hull=Vector(50,50,120),
+	jumpPower=500,
+	moveSpeed={
+		walk=400,
+		run=800
+	},
+	sounds={
+		loop_move="mvm/giant_scout/giant_scout_loop.wav",
+		step=idiotfix(pk_pills.helpers.makeList("mvm/giant_scout/giant_scout_step_0#.wav",4))
+	},
+	model="models/bots/scout_boss/bot_scout_boss.mdl"
+})
+
+pk_pills.register("tf_bot_soldier_giant",{
+	parent="tf_bot_soldier",
+	printName="Giant Soldier Bot",
+	modelScale=1.75,
+	health=3800,
+	default_rp_cost=30000,
+	camera={
+		offset=Vector(0,0,100),
+		dist=200
+	},
+	hull=Vector(50,50,120),
+	jumpPower=300,
+	moveSpeed={
+		walk=60,
+		run=120
+	},
+	sounds={
+		loop_move="mvm/giant_soldier/giant_soldier_loop.wav",
+		step=idiotfix(pk_pills.helpers.makeList("mvm/giant_soldier/giant_soldier_step0#.wav",4))
+	},
+	model="models/bots/soldier_boss/bot_soldier_boss.mdl"
+})
+
+pk_pills.register("tf_bot_pyro_giant",{
+	parent="tf_bot_pyro",
+	printName="Giant Pyro Bot",
+	modelScale=1.75,
+	health=3000,
+	default_rp_cost=30000,
+	camera={
+		offset=Vector(0,0,100),
+		dist=200
+	},
+	hull=Vector(50,50,120),
+	jumpPower=300,
+	moveSpeed={
+		walk=75,
+		run=150
+	},
+	sounds={
+		loop_move="mvm/giant_pyro/giant_pyro_loop.wav",
+		step=idiotfix(pk_pills.helpers.makeList("mvm/giant_pyro/giant_pyro_step_0#.wav",4))
+	},
+	model="models/bots/pyro_boss/bot_pyro_boss.mdl"
+})
+
+pk_pills.register("tf_bot_demo_giant",{
+	parent="tf_bot_demo",
+	printName="Giant Demo Bot",
+	modelScale=1.75,
+	health=3000,
+	default_rp_cost=30000,
+	camera={
+		offset=Vector(0,0,100),
+		dist=200
+	},
+	hull=Vector(50,50,120),
+	jumpPower=300,
+	moveSpeed={
+		walk=70,
+		run=140
+	},
+	sounds={
+		loop_move="mvm/giant_demoman/giant_demoman_loop.wav",
+		step=idiotfix(pk_pills.helpers.makeList("mvm/giant_demoman/giant_demoman_step_0#.wav",4))
+	},
+	model="models/bots/demo_boss/bot_demo_boss.mdl"
+})
+
+pk_pills.register("tf_bot_heavy_giant",{
+	parent="tf_bot_heavy",
+	printName="Giant Heavy Bot",
+	modelScale=1.75,
+	health=5000,
+	default_rp_cost=30000,
+	camera={
+		offset=Vector(0,0,100),
+		dist=200
+	},
+	hull=Vector(50,50,120),
+	jumpPower=300,
+	moveSpeed={
+		walk=60,
+		run=115
+	},
+	sounds={
+		loop_move="mvm/giant_heavy/giant_heavy_loop.wav",
+		step=idiotfix(pk_pills.helpers.makeList("mvm/giant_heavy/giant_heavy_step0#.wav",4))
+	},
+	model="models/bots/heavy_boss/bot_heavy_boss.mdl"
 })
